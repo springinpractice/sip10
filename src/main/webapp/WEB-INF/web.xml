@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	
+	<!-- Spring in Practice informational metadata -->
+	<context-param>
+		<param-name>appName</param-name>
+		<param-value>Contact Manager</param-value>
+	</context-param>
+	<context-param>
+		<param-name>recipe</param-name>
+		<param-value>10.1</param-value>
+	</context-param>
+	<context-param>
+		<param-name>aboutThisRecipe</param-name>
+		<param-value><![CDATA[
+<p>Recipe 10.1 presents a basic contact management web app implemented in the
+RESTful style using Spring 3, and built with Maven. We show how to set up the
+Maven infrastructure for integration testing, which includes a couple of Maven
+plug-ins (specifically, the Build Helper and Failsafe plug-ins) and several test
+dependencies.</p>
+
+<p>This recipe doesn't itself include any integration tests. We'll implement
+our first integration test in recipe 10.2.</p>
+		]]></param-value>
+	</context-param>
+	
+	<!-- Configuration -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:/spring/beans-datasource.xml
+			classpath:/spring/beans-service.xml
+		</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- Filters -->
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>methodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>methodFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:/spring/beans-web.xml
+			</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>

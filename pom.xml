@@ -11,12 +11,16 @@
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<artifactId>com.springinpractice.10_03</artifactId>
+	<artifactId>com.springinpractice.10_04</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	
-	<name>Spring in Practice Recipe 10.3</name>
-	<description>Recipe 10.3 shows how to verify that the code under test throws an expected exception.</description>
+	<name>Spring in Practice Recipe 10.4</name>
+	<description>
+		Recipe 10.4 shows how to create tests verifying performance, with the goal being to detect relative changes in
+		performance rather than testing absolute performance. Because performance varies from machine to machine, we
+		want to run these to run during continuous integration builds but not during private builds.
+	</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>
@@ -58,6 +62,14 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				
+				<!-- Added for recipe 10.4 -->
+				<configuration>
+					<systemPropertyVariables>
+						<!-- http://maven.apache.org/plugins/maven-surefire-plugin/examples/system-properties.html -->
+						<environment>${environment}</environment>
+					</systemPropertyVariables>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>

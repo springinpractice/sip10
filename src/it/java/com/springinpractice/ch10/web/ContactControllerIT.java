@@ -30,6 +30,9 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.ExpectedException;
+import org.springframework.test.annotation.IfProfileValue;
+import org.springframework.test.annotation.Repeat;
+import org.springframework.test.annotation.Timed;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -194,5 +197,20 @@ public class ContactControllerIT {
 		} catch (DataAccessException e) {
 			// OK, expected.
 		}
+	}
+	
+	@IfProfileValue(name = "environment", value = "ci")
+	@Repeat(20)
+	@Test(timeout = 200L)
+	public void testGetContactPerformanceSingleCall() {
+		controller.getContact(request, 1L, new ExtendedModelMap());
+	}
+	
+	@IfProfileValue(name = "environment", value = "ci")
+	@Repeat(20)
+	@Timed(millis = 2000)
+	@Test
+	public void testGetContactPerformanceMultipleCalls() {
+		controller.getContact(request, 1L, new ExtendedModelMap());
 	}
 }

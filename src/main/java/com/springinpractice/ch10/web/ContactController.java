@@ -142,7 +142,7 @@ public class ContactController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public String updateContact(
 			HttpServletRequest req,
-			@PathVariable("id") long id,
+			@PathVariable("id") Long id,
 			@ModelAttribute @Valid Contact contact,
 			BindingResult result) {
 		
@@ -159,7 +159,7 @@ public class ContactController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public String deleteContact(@PathVariable("id") long id, HttpServletResponse res) {
+	public String deleteContact(@PathVariable("id") long id) {
 		contactService.deleteContact(id);
 		return "redirect:/contacts.html?deleted=true";
 	}

@@ -19,8 +19,9 @@
 	<util:map id="viewNames">
 		<entry key="contactList" value="contactList" />
 		<entry key="contactForm" value="contactForm" />
-		<entry key="createContactSuccess" value="redirect:/contacts?saved=true" />
-		<entry key="updateContactSuccess" value="redirect:/contacts?saved=true" />
+		<entry key="createContactSuccess" value="redirect:/contacts.html?saved=true" />
+		<entry key="updateContactSuccess" value="redirect:/contacts.html?saved=true" />
+		<entry key="deleteContactSuccess" value="redirect:/contacts.html?deleted=true" />
 	</util:map>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"

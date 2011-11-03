@@ -11,19 +11,12 @@
 	</context-param>
 	<context-param>
 		<param-name>recipe</param-name>
-		<param-value>10.1</param-value>
+		<param-value>10.2</param-value>
 	</context-param>
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>Recipe 10.1 presents a basic contact management web app implemented in the
-RESTful style using Spring 3, and built with Maven. We show how to set up the
-Maven infrastructure for integration testing, which includes a couple of Maven
-plug-ins (specifically, the Build Helper and Failsafe plug-ins) and several test
-dependencies.</p>
-
-<p>This recipe doesn't itself include any integration tests. We'll implement
-our first integration test in recipe 10.2.</p>
+<p>In recipe 10.2 we implement transactional, "happy path" integration tests.</p>
 		]]></param-value>
 	</context-param>
 	

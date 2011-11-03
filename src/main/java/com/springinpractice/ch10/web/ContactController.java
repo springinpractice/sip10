@@ -56,6 +56,9 @@ public class ContactController {
 	@Value("#{viewNames.updateContactSuccess}")
 	private String updateContactSuccessViewName;
 	
+	@Value("#{viewNames.deleteContactSuccess}")
+	private String deleteContactSuccessViewName;
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setAllowedFields(new String[] {
@@ -161,7 +164,7 @@ public class ContactController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public String deleteContact(@PathVariable("id") long id) {
 		contactService.deleteContact(id);
-		return "redirect:/contacts.html?deleted=true";
+		return deleteContactSuccessViewName;
 	}
 
 	private void prepareNewContactForm(HttpServletRequest req) {

@@ -11,12 +11,13 @@
 	</context-param>
 	<context-param>
 		<param-name>recipe</param-name>
-		<param-value>10.5</param-value>
+		<param-value>10.6</param-value>
 	</context-param>
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>In recipe 10.5 we show how to ignore individual tests, which is a nice alternative to commenting them out.</p>
+<p>Recipe 10.6 shows how to use an embedded database for integration testing, as an alternative to using an external
+database.</p>
 		]]></param-value>
 	</context-param>
 	

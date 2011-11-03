@@ -11,14 +11,12 @@
 	</context-param>
 	<context-param>
 		<param-name>recipe</param-name>
-		<param-value>10.4</param-value>
+		<param-value>10.5</param-value>
 	</context-param>
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>Recipe 10.4 shows how to create tests verifying performance, with the goal being to detect relative changes in
-performance rather than testing absolute performance. Because performance varies from machine to machine, we want to run
-these to run during continuous integration builds but not during private builds.</p>
+<p>In recipe 10.5 we show how to ignore individual tests, which is a nice alternative to commenting them out.</p>
 		]]></param-value>
 	</context-param>
 	

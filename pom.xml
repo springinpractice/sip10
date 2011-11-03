@@ -11,15 +11,13 @@
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<artifactId>com.springinpractice.10_04</artifactId>
+	<artifactId>com.springinpractice.10_05</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	
-	<name>Spring in Practice Recipe 10.4</name>
+	<name>Spring in Practice Recipe 10.5</name>
 	<description>
-		Recipe 10.4 shows how to create tests verifying performance, with the goal being to detect relative changes in
-		performance rather than testing absolute performance. Because performance varies from machine to machine, we
-		want to run these to run during continuous integration builds but not during private builds.
+		In recipe 10.5 we show how to ignore individual tests, which is a nice alternative to commenting them out.
 	</description>
 	<url>http://springinpractice.com/</url>
 	

@@ -22,6 +22,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -99,6 +100,7 @@ public class ContactControllerIT {
 		this.model = null;
 	}
 	
+	@Ignore
 	@Test
 	@ExpectedException(HibernateException.class)
 	@DirtiesContext

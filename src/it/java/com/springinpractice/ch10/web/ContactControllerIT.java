@@ -63,7 +63,6 @@ public class ContactControllerIT {
 	
 	private SimpleJdbcTemplate jdbcTemplate;
 	private MockHttpServletRequest request;
-	private MockHttpServletResponse response;
 	private Model model;
 	
 	@Before
@@ -145,7 +144,7 @@ public class ContactControllerIT {
 		assertNotNull(contact);
 		
 		// Exercise code
-		controller.deleteContact(1L, response);
+		controller.deleteContact(1L);
 		
 		// Verify
 //		assertEquals("text/plain", response.getContentType());

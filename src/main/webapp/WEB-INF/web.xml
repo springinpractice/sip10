@@ -11,12 +11,12 @@
 	</context-param>
 	<context-param>
 		<param-name>recipe</param-name>
-		<param-value>10.2</param-value>
+		<param-value>10.3</param-value>
 	</context-param>
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>In recipe 10.2 we implement transactional, "happy path" integration tests.</p>
+<p>Recipe 10.3 shows how to verify that the code under test throws an expected exception.</p>
 		]]></param-value>
 	</context-param>
 	

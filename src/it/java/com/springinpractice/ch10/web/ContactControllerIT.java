@@ -12,10 +12,13 @@ package com.springinpractice.ch10.web;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;
@@ -25,15 +28,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.ExpectedException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 
+import com.springinpractice.ch10.dao.HbnContactDao;
 import com.springinpractice.ch10.model.Contact;
 import com.springinpractice.web.ResourceNotFoundException;
 
@@ -52,8 +58,11 @@ public class ContactControllerIT {
 		"select first_name from contact where id = ?";
 	
 	@Inject private ContactController controller;
+	@Inject private HbnContactDao contactDao;
 	@Inject private SessionFactory sessionFactory;
 	@Inject private DataSource dataSource;
+	
+	private SessionFactory badSessionFactory;
 	
 	@Value("#{viewNames.contactForm}")
 	private String expectedContactFormViewName;
@@ -70,6 +79,10 @@ public class ContactControllerIT {
 	
 	@Before
 	public void setUp() throws Exception {
+		this.badSessionFactory = mock(SessionFactory.class);
+		when(badSessionFactory.getCurrentSession())
+			.thenThrow(new HibernateException("Problem getting current session"));
+		
 		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
 		this.request = new MockHttpServletRequest();
 		this.model = new ExtendedModelMap();
@@ -77,9 +90,18 @@ public class ContactControllerIT {
 	
 	@After
 	public void tearDown() throws Exception {
+		this.badSessionFactory = null;
 		this.jdbcTemplate = null;
 		this.request = null;
 		this.model = null;
+	}
+	
+	@Test
+	@ExpectedException(HibernateException.class)
+	@DirtiesContext
+	public void testGetContactWithBadSessionFactory() {
+		ReflectionTestUtils.setField(contactDao, "sessionFactory", badSessionFactory);
+		controller.getContact(request, 1L, model);
 	}
 	
 	@Test

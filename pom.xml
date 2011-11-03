@@ -11,12 +11,12 @@
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<artifactId>com.springinpractice.10_02</artifactId>
+	<artifactId>com.springinpractice.10_03</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	
-	<name>Spring in Practice Recipe 10.2</name>
-	<description>In recipe 10.2 we implement transactional, "happy path" integration tests.</description>
+	<name>Spring in Practice Recipe 10.3</name>
+	<description>Recipe 10.3 shows how to verify that the code under test throws an expected exception.</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>

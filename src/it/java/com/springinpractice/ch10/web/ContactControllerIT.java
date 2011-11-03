@@ -61,6 +61,9 @@ public class ContactControllerIT {
 	@Value("#{viewNames.updateContactSuccess}")
 	private String expectedUpdateContactSuccessViewName;
 	
+	@Value("#{viewNames.deleteContactSuccess}")
+	private String expectedDeleteContactSuccessViewName;
+	
 	private SimpleJdbcTemplate jdbcTemplate;
 	private MockHttpServletRequest request;
 	private Model model;
@@ -69,7 +72,6 @@ public class ContactControllerIT {
 	public void setUp() throws Exception {
 		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
 		this.request = new MockHttpServletRequest();
-		this.response = new MockHttpServletResponse();
 		this.model = new ExtendedModelMap();
 	}
 	
@@ -77,7 +79,6 @@ public class ContactControllerIT {
 	public void tearDown() throws Exception {
 		this.jdbcTemplate = null;
 		this.request = null;
-		this.response = null;
 		this.model = null;
 	}
 	
@@ -144,10 +145,11 @@ public class ContactControllerIT {
 		assertNotNull(contact);
 		
 		// Exercise code
-		controller.deleteContact(1L);
+		String viewName = controller.deleteContact(1L);
 		
 		// Verify
-//		assertEquals("text/plain", response.getContentType());
+		assertEquals(expectedDeleteContactSuccessViewName, viewName);
+		
 		try {
 			controller.getContact(request, 1L, new ExtendedModelMap());
 			fail("Expected ResourceNotFoundException");

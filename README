@@ -1,0 +1,11 @@
+========================================================================================================================
+README - Spring in Practice Recipe 10.6
+========================================================================================================================
+
+Recipe 10.6 shows how to run integration tests against an embedded (in-memory) database.
+
+To run this recipe, type
+
+    mvn -e verify
+
+from the top-level directory. You don't need to create a database explicitly.

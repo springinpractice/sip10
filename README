@@ -1,0 +1,6 @@
+========================================================================================================================
+README - Spring in Practice Recipe 10.1
+========================================================================================================================
+
+This recipe shows how to configure Maven for integration testing. This generally involves setting up plugins in the
+Maven POM (pom.xml). There isn't anything to run yet.

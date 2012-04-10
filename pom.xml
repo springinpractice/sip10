@@ -12,7 +12,6 @@
 	</parent>
 	
 	<artifactId>com.springinpractice.10_03</artifactId>
-	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	
 	<name>Spring in Practice Recipe 10.3</name>

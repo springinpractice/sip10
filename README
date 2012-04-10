@@ -1,0 +1,16 @@
+========================================================================================================================
+README - Spring in Practice Recipe 10.2
+========================================================================================================================
+
+In recipe 10.2 we write happy path integration tests using the Spring TestContext Framework.
+
+To run this recipe:
+
+1) Create a database called sip10_it. You don't need to do anything other than create the database as the integration
+test script will create the schema and test data.
+
+2) From the top-level directory, type
+
+    mvn -e verify
+
+to run the integration tests.

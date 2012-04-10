@@ -40,7 +40,7 @@ Author web site - http://wheelersoftware.com/
 	     Or you can get rid of this config element altogether if you want to
 	     handle the test database manually. -->		
 	<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
-		<jdbc:script location="classpath:mysql/sip10-schema-mysql.sql" />
-		<jdbc:script location="classpath:mysql/sip10-test-data-mysql.sql" />
+		<jdbc:script location="classpath:/mysql/sip10-schema-mysql.sql" />
+		<jdbc:script location="classpath:/mysql/sip10-test-data-mysql.sql" />
 	</jdbc:initialize-database>
 </beans>

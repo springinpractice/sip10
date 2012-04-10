@@ -1,0 +1,17 @@
+========================================================================================================================
+README - Spring in Practice Recipe 10.5
+========================================================================================================================
+
+We show how to ignore a test in recipe 10.5. This is a useful alternative to commenting tests out or deleting them
+altogether.
+
+To run this recipe:
+
+1) Create a database called sip10_it, if you haven't already done so. You don't need to do anything other than create
+the database as the integration test script will create the schema and test data.
+
+2) From the top-level directory, type
+
+    mvn -e verify
+
+to run the integration tests.

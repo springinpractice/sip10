@@ -1,8 +1,8 @@
 ========================================================================================================================
-README - Spring in Practice Recipe 10.3
+README - Spring in Practice Recipe 10.4
 ========================================================================================================================
 
-In recipe 10.3 show how to write an integration test that expects an exception.
+Recipe 10.4 shows how to create an integration test that verifies performance.
 
 To run this recipe:
 

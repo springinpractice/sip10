@@ -1,0 +1,16 @@
+========================================================================================================================
+README - Spring in Practice Recipe 10.3
+========================================================================================================================
+
+In recipe 10.3 show how to write an integration test that expects an exception.
+
+To run this recipe:
+
+1) Create a database called sip10_it, if you haven't already done so. You don't need to do anything other than create
+the database as the integration test script will create the schema and test data.
+
+2) From the top-level directory, type
+
+    mvn -e verify
+
+to run the integration tests.

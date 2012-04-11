@@ -13,4 +13,10 @@ the database as the integration test script will create the schema and test data
 
     mvn -e verify
 
-to run the integration tests.
+to run the integration tests *except* for the two performance tests.
+
+3) From the same directory, type
+
+    mvn -e -Denvironment=ci verify
+
+to run all integration tests, including the two performance tests.

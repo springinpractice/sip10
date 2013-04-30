@@ -1,12 +1,3 @@
-/* 
- * $Id$
- * 
- * Copyright (c) 2010 Manning Publications Co.
- * 
- * Book web site   - http://www.manning.com/wheeler/
- * Book blog       - http://springinpractice.com/
- * Author web site - http://wheelersoftware.com/
- */
 package com.springinpractice.ch10.web;
 
 import static org.junit.Assert.assertEquals;
@@ -25,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,8 +27,9 @@ import org.springframework.validation.BindingResult;
 import com.springinpractice.ch10.model.Contact;
 import com.springinpractice.web.ResourceNotFoundException;
 
+// NOTE: SimpleJdbcTemplate is deprecated as of Spring 3.1. Prefer JdbcTemplate.
+
 /**
- * @version $Id$
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
 @RunWith(SpringJUnit4ClassRunner.class)

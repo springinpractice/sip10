@@ -1,11 +1,10 @@
 /* 
- * $Id$
+ * Copyright (c) 2013 Manning Publications Co.
  * 
- * Copyright (c) 2010 Manning Publications Co.
- * 
- * Book web site   - http://www.manning.com/wheeler/
- * Book blog       - http://springinpractice.com/
- * Author web site - http://wheelersoftware.com/
+ * Blog   : http://springinpractice.com/
+ * GitHub : https://github.com/organizations/springinpractice
+ * Book   : http://manning.com/wheeler/
+ * Forum  : http://www.manning-sandbox.com/forum.jspa?forumID=503
  */
 package com.springinpractice.ch10.web;
 
@@ -26,10 +25,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.ExpectedException;
+//import org.springframework.test.annotation.ExpectedException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -43,8 +43,12 @@ import com.springinpractice.ch10.dao.HbnContactDao;
 import com.springinpractice.ch10.model.Contact;
 import com.springinpractice.web.ResourceNotFoundException;
 
+// NOTES:
+// - SimpleJdbcTemplate is deprecated as of Spring 3.1. Prefer JdbcTemplate.
+// - ExpectedException deprecated as of Spring 3.1 in favor of underlying framework expectation mechanism. For JUnit
+//   it's @Test(expected = ...)
+
 /**
- * @version $Id$
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -73,7 +77,10 @@ public class ContactControllerIT {
 	@Value("#{viewNames.deleteContactSuccess}")
 	private String expectedDeleteContactSuccessViewName;
 	
-	private SimpleJdbcTemplate jdbcTemplate;
+	// SimpleJdbcTemplate deprecated; see above. Using JdbcTemplate instead.
+//	private SimpleJdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
+	
 	private MockHttpServletRequest request;
 	private Model model;
 	
@@ -83,7 +90,10 @@ public class ContactControllerIT {
 		when(badSessionFactory.getCurrentSession())
 			.thenThrow(new HibernateException("Problem getting current session"));
 		
-		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+		// SimpleJdbcTemplate deprecated; see above. Using JdbcTemplate instead.
+//		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		
 		this.request = new MockHttpServletRequest();
 		this.model = new ExtendedModelMap();
 	}
@@ -96,8 +106,9 @@ public class ContactControllerIT {
 		this.model = null;
 	}
 	
-	@Test
-	@ExpectedException(HibernateException.class)
+	// @ExpectedException deprecated; see above. Using @Test(expected = ...) instead.
+	@Test(expected = HibernateException.class)
+//	@ExpectedException(HibernateException.class)
 	@DirtiesContext
 	public void testGetContactWithBadSessionFactory() {
 		ReflectionTestUtils.setField(contactDao, "sessionFactory", badSessionFactory);

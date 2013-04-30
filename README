@@ -1,8 +1,5 @@
 ========================================================================================================================
-<<<<<<< HEAD
 README - Spring in Practice Recipe 10.3
-=======
-README - Spring in Practice Recipe 10.2
 
 Copyright (c) 2013 Manning Publications Co.
 
@@ -12,7 +9,6 @@ Blog   : http://springinpractice.com/
 GitHub : https://github.com/organizations/springinpractice
 Book   : http://manning.com/wheeler/
 Forum  : http://www.manning-sandbox.com/forum.jspa?forumID=503
->>>>>>> 02
 ========================================================================================================================
 
 In recipe 10.3 show how to write an integration test that expects an exception.

@@ -22,7 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -34,6 +34,7 @@ import org.springframework.validation.BindingResult;
 
 import com.springinpractice.ch10.model.Contact;
 import com.springinpractice.web.ResourceNotFoundException;
+//import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 // NOTE: SimpleJdbcTemplate is deprecated as of Spring 3.1. Prefer JdbcTemplate.
 
@@ -63,13 +64,20 @@ public class ContactControllerIT {
 	@Value("#{viewNames.deleteContactSuccess}")
 	private String expectedDeleteContactSuccessViewName;
 	
-	private SimpleJdbcTemplate jdbcTemplate;
+	// SimpleJdbcTemplate deprecated as of Spring 3.1; see above. Using JdbcTemplate instead.
+//	private SimpleJdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
+	
 	private MockHttpServletRequest request;
 	private Model model;
 	
 	@Before
 	public void setUp() throws Exception {
-		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+		
+		// SimpleJdbcTemplate deprecated as of Spring 3.1; see above. Using JdbcTemplate instead.
+//		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		
 		this.request = new MockHttpServletRequest();
 		this.model = new ExtendedModelMap();
 	}

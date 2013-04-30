@@ -1,11 +1,10 @@
 /* 
- * $Id: ContactDao.java 20 2010-05-02 08:36:22Z  $
+ * Copyright (c) 2013 Manning Publications Co.
  * 
- * Copyright (c) 2010 Manning Publications Co.
- * 
- * Book web site   - http://www.manning.com/wheeler/
- * Book blog       - http://springinpractice.com/
- * Author web site - http://wheelersoftware.com/
+ * Blog   : http://springinpractice.com/
+ * GitHub : https://github.com/organizations/springinpractice
+ * Book   : http://manning.com/wheeler/
+ * Forum  : http://www.manning-sandbox.com/forum.jspa?forumID=503
  */
 package com.springinpractice.ch10.dao;
 
@@ -17,7 +16,6 @@ import com.springinpractice.dao.Dao;
  * Data access object interface for contacts.
  * </p>
  * 
- * @version $Id: ContactDao.java 20 2010-05-02 08:36:22Z  $
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
 public interface ContactDao extends Dao<Contact> { }

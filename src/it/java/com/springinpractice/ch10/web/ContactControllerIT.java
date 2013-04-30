@@ -26,10 +26,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.annotation.DirtiesContext;
-//import org.springframework.test.annotation.ExpectedException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -42,6 +40,8 @@ import org.springframework.validation.BindingResult;
 import com.springinpractice.ch10.dao.HbnContactDao;
 import com.springinpractice.ch10.model.Contact;
 import com.springinpractice.web.ResourceNotFoundException;
+//import org.springframework.test.annotation.ExpectedException;
+//import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 // NOTES:
 // - SimpleJdbcTemplate is deprecated as of Spring 3.1. Prefer JdbcTemplate.
@@ -77,7 +77,7 @@ public class ContactControllerIT {
 	@Value("#{viewNames.deleteContactSuccess}")
 	private String expectedDeleteContactSuccessViewName;
 	
-	// SimpleJdbcTemplate deprecated; see above. Using JdbcTemplate instead.
+	// SimpleJdbcTemplate deprecated as of Spring 3.1; see above. Using JdbcTemplate instead.
 //	private SimpleJdbcTemplate jdbcTemplate;
 	private JdbcTemplate jdbcTemplate;
 	
@@ -90,7 +90,7 @@ public class ContactControllerIT {
 		when(badSessionFactory.getCurrentSession())
 			.thenThrow(new HibernateException("Problem getting current session"));
 		
-		// SimpleJdbcTemplate deprecated; see above. Using JdbcTemplate instead.
+		// SimpleJdbcTemplate deprecated as of Spring 3.1; see above. Using JdbcTemplate instead.
 //		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		
